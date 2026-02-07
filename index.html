@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carta</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #000;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+#progresso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #fff;
+  width: 0;
+  z-index: 10;
+}
+
+.tela {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  font-size: 22px;
+  padding: 16px 36px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.carta {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 24px;
+  line-height: 1.9;
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.carta.ativa {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carta p {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: aparecer 0.8s forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carta p:nth-child(1) { animation-delay: 0.2s; }
+.carta p:nth-child(2) { animation-delay: 0.4s; }
+.carta p:nth-child(3) { animation-delay: 0.6s; }
+.carta p:nth-child(4) { animation-delay: 0.8s; }
+.carta p:nth-child(5) { animation-delay: 1s; }
+.carta p:nth-child(6) { animation-delay: 1.2s; }
+.carta p:nth-child(7) { animation-delay: 1.4s; }
+.carta p:nth-child(8) { animation-delay: 1.6s; }
+.carta p:nth-child(9) { animation-delay: 1.8s; }
+.carta p:nth-child(10) { animation-delay: 2s; }
+.carta p:nth-child(11) { animation-delay: 2.2s; }
+.carta p:nth-child(12) { animation-delay: 2.4s; }
+
+.assinatura {
+  margin-top: 50px;
+  font-weight: bold;
+  text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<div id="progresso"></div>
+
+<!-- TELA INICIAL -->
+<div class="tela" id="inicio">
+  <button onclick="iniciar()">💌 Carta</button>
+</div>
+
+<!-- CARTA -->
+<div class="carta" id="carta">
+
+<p><strong>São Paulo, 7 de fevereiro de 2026</strong></p>
+
+<p>Oi,</p>
+
+<p>
+Espero que, ao ler essa carta, você esteja bem e em paz 🤍.<br>
+Escrevo com o coração apertado, mas cheio de gratidão.
+</p>
+
+<p>
+Quero te agradecer por tudo o que você viveu aqui com a gente.  
+Por cada risada, cada conversa, cada gesto de carinho ✨.  
+Foram momentos simples, mas que ficaram guardados de um jeito muito especial.  
+Você é uma pessoa rara gentil, verdadeira, de um coração enorme 
+e eu espero que você nunca, nunca se esqueça disso, mesmo nos dias difíceis.
+</p>
+
+<p>
+E aproveito para dizer também: desculpa pelas piadas… kkkkk 😅.  
+Você sabe que esse é o meu jeito normal de ser.  
+Às vezes falo brincando, às vezes exagero um pouco,  
+mas sempre foi com carinho e com a intenção de te ver sorrir.
+</p>
+
+<p>
+Não sei exatamente quando você vai estar lendo essas palavras,  
+mas sei que, neste momento, já sentimos muito a sua falta por aqui.  
+A sua presença fez diferença.  
+Você iluminou os nossos dias e deixou marcas bonitas em todos nós 🌟.
+</p>
+
+<p>
+Te desejo tudo de melhor que a vida pode oferecer.  
+Você é inteligente, determinada e capaz de ir muito longe 🌍.  
+Tenho certeza de que vai conquistar tudo aquilo que sonha,  
+onde quer que você esteja.
+</p>
+
+<p>
+Aqui no Brasil, você não construiu apenas amizades.  
+Você construiu uma família 🤍.
+</p>
+
+<p>
+Eu estarei sempre aqui. Sempre.  
+Para ouvir, para conversar, para rir  
+ou até para chorar junto, se for preciso.
+</p>
+
+<p>
+Espero, de coração, que um dia você volte ✈️.  
+Para a gente se reencontrar  
+e criar novas memórias juntos 💫.
+</p>
+
+<p>
+Tenha uma boa viagem.  
+Você vai fazer falta…  
+e será sempre muito querida 🤍.
+</p>
+
+<p class="assinatura">
+Com todo o meu carinho,<br>
+Murilo Silva Dantas 🖊️
+</p>
+
+</div>
+
+<script>
+function iniciar() {
+  if (confirm("Deseja prosseguir?")) {
+    if (confirm("Tem certeza que quer continuar?")) {
+      if (confirm("Agora não tem mais volta…")) {
+        document.getElementById("inicio").style.display = "none";
+        const carta = document.getElementById("carta");
+        carta.classList.add("ativa");
+        window.scrollTo(0, 0);
+      }
+    }
+  }
+}
+
+window.addEventListener("scroll", () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById("progresso").style.width = scrolled + "%";
+});
+</script>
+
+</body>
+</html>
